@@ -10,6 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_10_12_225411) do
+
+  create_table "bills", force: :cascade do |t|
+    t.string "voucher_node"
+    t.string "version"
+    t.string "serie"
+    t.string "folio"
+    t.string "date"
+    t.string "stamp"
+    t.string "way_to_pay"
+    t.string "certificate_number"
+    t.string "certificate"
+    t.string "payment_conditions"
+    t.string "subtotal"
+    t.string "discount"
+    t.string "currency"
+    t.string "exchange_rate"
+    t.string "total"
+    t.string "type_of_vaucher"
+    t.string "payment_method"
+    t.string "expedition_place"
+    t.string "confirmation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end

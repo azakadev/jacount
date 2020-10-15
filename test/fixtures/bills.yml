@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  voucher_node: MyString
+  version: MyString
+  serie: MyString
+  folio: MyString
+  date: MyString
+  stamp: MyString
+  way_to_pay: MyString
+  certificate_number: MyString
+  certificate: MyString
+  payment_conditions: MyString
+  subtotal: MyString
+  discount: MyString
+  currency: MyString
+  exchange_rate: MyString
+  total: MyString
+  type_of_vaucher: MyString
+  payment_method: MyString
+  expedition_place: MyString
+  confirmation: MyString
+
+two:
+  voucher_node: MyString
+  version: MyString
+  serie: MyString
+  folio: MyString
+  date: MyString
+  stamp: MyString
+  way_to_pay: MyString
+  certificate_number: MyString
+  certificate: MyString
+  payment_conditions: MyString
+  subtotal: MyString
+  discount: MyString
+  currency: MyString
+  exchange_rate: MyString
+  total: MyString
+  type_of_vaucher: MyString
+  payment_method: MyString
+  expedition_place: MyString
+  confirmation: MyString
