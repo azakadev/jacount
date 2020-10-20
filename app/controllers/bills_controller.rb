@@ -6,11 +6,14 @@ class BillsController < ApplicationController
   def create
     unformated_json = params['_json'].first
 
+    Bill.delete_all
+
     params['_json'].each do |item|
-      bill = Bill.from_json(unformated_json)
+      bill = Bill.from_json(item)
       bill.save
     end
+    # redirect_to bills_url
     byebug
-    redirect_to bills_url
+    render json: JSON.parse( unformated_json )
   end
 end

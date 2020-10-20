@@ -11,15 +11,27 @@ class CreateBills < ActiveRecord::Migration[6.0]
       t.string :certificate_number
       t.string :certificate
       t.string :payment_conditions
-      t.string :subtotal
+      t.decimal :subtotal, precision: 10, scale: 2
       t.string :discount
       t.string :currency
       t.string :exchange_rate
-      t.string :total
+      t.decimal :total, precision: 10, scale: 2
       t.string :type_of_vaucher
       t.string :payment_method
       t.string :expedition_place
       t.string :confirmation
+
+      t.string :transmiter_rfc
+      t.string :transmiter_name
+      t.string :transmiter_fiscal_regime
+
+      t.string :receiver_rfc
+      t.string :receiver_name
+      t.string :receiver_cfdi_use
+
+      t.string :initial_payment_date
+      t.string :final_payment_date
+      t.string :payment_date
 
       t.timestamps
     end

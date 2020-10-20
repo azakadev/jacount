@@ -6,50 +6,73 @@
 <%= button_to 'Cargar XMLs', bills_path, id: 'sendDataButton' %>
 
 
-<table class="table-auto border-collapse border-2 border-gray-500 mx-1 my-5">
+<table class="table-auto responsive border-collapse border-2 border-gray-500 mx-1 my-5">
   <thead>
     <tr>
-      <th class="border border-gray-400">Versión</th>
-      <th class="border border-gray-400">Serie</th>
+      <!-- <th class="border border-gray-400">Versión</th> -->
+      <!-- <th class="border border-gray-400">Serie</th> -->
       <th class="border border-gray-400">Folio</th>
       <th class="border border-gray-400">Fecha</th>
-      <th class="border border-gray-400">Sello</th>
+      <!-- <th class="border border-gray-400">Sello</th> -->
       <th class="border border-gray-400">Forma de Pago</th>
-      <th class="border border-gray-400">NoCertificado</th>
-      <th class="border border-gray-400">Certificado</th>
-      <th class="border border-gray-400">Condiciones de Pago</th>
+      <!-- <th class="border border-gray-400">NoCertificado</th> -->
+      <!-- <th class="border border-gray-400">Certificado</th> -->
+      <!-- <th class="border border-gray-400">Condiciones de Pago</th> -->
       <th class="border border-gray-400">SubTotal</th>
       <th class="border border-gray-400">Descuento</th>
-      <th class="border border-gray-400">Moneda</th>
-      <th class="border border-gray-400">CambioMoneda</th>
+      <!-- <th class="border border-gray-400">Moneda</th> -->
+      <!-- <th class="border border-gray-400">CambioMoneda</th> -->
       <th class="border border-gray-400">Total</th>
       <th class="border border-gray-400">Tipo de recibo</th>
       <th class="border border-gray-400">Metodo de pago</th>
       <th class="border border-gray-400">LugarExpedicion</th>
       <th class="border border-gray-400">Confirmación</th>
+
+      <th class="border border-gray-400">EmisorRFC</th>
+      <th class="border border-gray-400">EmisorNombre</th>
+      <th class="border border-gray-400">EmisorRegimenFiscal</th>
+
+      <th class="border border-gray-400">FechaInicialPago</th>
+      <th class="border border-gray-400">FechaFinalPago</th>
+      <th class="border border-gray-400">FechaPago</th>
+
+      <th class="border border-gray-400">Percepciones</th>
+
+
     </tr>
   </thead>
   <tbody>
     <% @bills.each do |bill| %>
       <tr>
-        <td class="border border-gray-400"><%= bill.version %></td>
-        <td class="border border-gray-400"><%= bill.serie %></td>
+        <!-- <td class="border border-gray-400"><%= bill.version %></td> -->
+        <!-- <td class="border border-gray-400"><%= bill.serie %></td> -->
         <td class="border border-gray-400"><%= bill.folio %></td>
         <td class="border border-gray-400"><%= bill.date %></td>
-        <td class="border border-gray-400"><%= truncate bill.stamp %></td>
+        <!-- <td class="border border-gray-400"><%# truncate bill.stamp %></td> -->
         <td class="border border-gray-400"><%= bill.way_to_pay %></td>
-        <td class="border border-gray-400"><%= bill.certificate_number %></td>
-        <td class="border border-gray-400"><%= truncate bill.certificate %></td>
-        <td class="border border-gray-400"><%= bill.payment_conditions %></td>
+        <!-- <td class="border border-gray-400"><%# bill.certificate_number %></td> -->
+        <!-- <td class="border border-gray-400"><%#  truncate bill.certificate %></td> -->
+        <!-- <td class="border border-gray-400"><%# bill.payment_conditions %></td> -->
         <td class="border border-gray-400"><%= bill.subtotal %></td>
         <td class="border border-gray-400"><%= bill.discount %></td>
-        <td class="border border-gray-400"><%= bill.currency %></td>
-        <td class="border border-gray-400"><%= bill.exchange_rate %></td>
+        <!-- <td class="border border-gray-400"><%# bill.currency %></td> -->
+        <!-- <td class="border border-gray-400"><%# bill.exchange_rate %></td> -->
         <td class="border border-gray-400"><%= bill.total %></td>
         <td class="border border-gray-400"><%= bill.type_of_vaucher %></td>
         <td class="border border-gray-400"><%= bill.payment_method %></td>
         <td class="border border-gray-400"><%= bill.expedition_place %></td>
         <td class="border border-gray-400"><%= bill.confirmation %></td>
+
+        <td class="border border-gray-400"><%= bill.transmiter_rfc %></td>
+        <td class="border border-gray-400"><%= bill.transmiter_name %></td>
+        <td class="border border-gray-400 text-right"><%= bill.transmiter_fiscal_regime %></td>
+
+        <td class="border border-gray-400"><%= bill.initial_payment_date %></td>
+        <td class="border border-gray-400"><%= bill.final_payment_date %></td>
+        <td class="border border-gray-400"><%= bill.payment_date %></td>
+
+        <td class="border border-gray-400"><%= bill.payroll_perceptions.count %></td>
+
       </tr>
     <% end %>
   </tbody>
