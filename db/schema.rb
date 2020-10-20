@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_10_20_122137) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "bills", force: :cascade do |t|
     t.string "voucher_node"
     t.string "version"
