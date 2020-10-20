@@ -6,7 +6,7 @@ class BillsController < ApplicationController
   def create
     unformated_json = params['_json'].first
 
-    Bill.delete_all
+    Bill.destroy_all
 
     params['_json'].each do |item|
       bill = Bill.from_json(item)

@@ -1,21 +1,33 @@
 class Bill < ApplicationRecord
-  has_many :payroll_perceptions
+  has_many :payroll_perceptions, dependent: :delete_all
+  has_many :payroll_deductions, dependent: :delete_all
 
   accepts_nested_attributes_for :payroll_perceptions
-
+  accepts_nested_attributes_for :payroll_deductions
 
   def self.from_json(string)
     json = JSON.parse string, symbolize_names: true
     json = json.dig(:elements).first
     # Get PayrollBill Perceptions
     perceptions = 
-      ( json.dig(:elements, 3, :elements, 0, :elements, 2, :elements) || [] ).map do |perception|
+      ( get_perceptions(json).dig(0, :elements) || [] ).map do |perception|
         {
           perception_type:  perception.dig(:attributes, :TipoPercepcion),
           code:             perception.dig(:attributes, :Clave),
           concept:          perception.dig(:attributes, :Concepto),
           taxed_amount:     perception.dig(:attributes, :ImporteGravado),
           exempt_amount:    perception.dig(:attributes, :ImporteExento),
+        }
+      end
+
+    byebug
+    deductions = 
+      ( get_deductions(json).dig(0, :elements) || [] ).map do |deduction|
+        {
+          deduction_type:   deduction.dig(:attributes, :TipoDeduccion),
+          code:             deduction.dig(:attributes, :Clave),
+          concept:          deduction.dig(:attributes, :Concepto),
+          amount:           deduction.dig(:attributes, :Importe),
         }
       end
 
@@ -51,9 +63,17 @@ class Bill < ApplicationRecord
       final_payment_date:   json.dig(:elements, 3, :elements, 0, :attributes, :FechaFinalPago),
       payment_date:         json.dig(:elements, 3, :elements, 0, :attributes, :FechaPago),
 
-      payroll_perceptions_attributes: perceptions
+      payroll_perceptions_attributes: perceptions,
+      payroll_deductions_attributes: deductions,
     )
-    byebug
-    payroll_bill
+  end
+
+  private
+  def self.get_deductions(json)
+    json.dig(:elements, 3, :elements, 0, :elements).select {|element| element[:name] == "nomina12:Deducciones"}
+  end
+
+  def self.get_perceptions(json)
+    json.dig(:elements, 3, :elements, 0, :elements).select {|element| element[:name] == "nomina12:Percepciones"}
   end
 end

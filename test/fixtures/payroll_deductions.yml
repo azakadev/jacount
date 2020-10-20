@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deduction_type: MyString
+  code: MyString
+  concept: MyString
+  amount: MyString
+  bill: one
+
+two:
+  deduction_type: MyString
+  code: MyString
+  concept: MyString
+  amount: MyString
+  bill: two
