@@ -1,10 +1,9 @@
+
 <h1 class="text-xl text-gray-900 leading-tight">Bills#index</h1>
 <p class="text-gray-700">Find me in app/views/bills/index.html.erb</p>
-
 <%= file_field_tag 'Carpeta', id: 'input_xml_load', webkitdirectory: true, directory: true, multiple: true %>
 
 <%= button_to 'Cargar XMLs', bills_path, id: 'sendDataButton' %>
-
 
 <table class="table-auto border-collapse border-2 border-gray-500 mx-1 my-5">
   <thead>
@@ -32,24 +31,25 @@
   <tbody>
     <% @bills.each do |bill| %>
       <tr>
-        <td class="border border-gray-400"><%= bill.version %></td>
-        <td class="border border-gray-400"><%= bill.serie %></td>
-        <td class="border border-gray-400"><%= bill.folio %></td>
-        <td class="border border-gray-400"><%= bill.date %></td>
-        <td class="border border-gray-400"><%= truncate bill.stamp %></td>
-        <td class="border border-gray-400"><%= bill.way_to_pay %></td>
-        <td class="border border-gray-400"><%= bill.certificate_number %></td>
-        <td class="border border-gray-400"><%= truncate bill.certificate %></td>
-        <td class="border border-gray-400"><%= bill.payment_conditions %></td>
-        <td class="border border-gray-400"><%= bill.subtotal %></td>
-        <td class="border border-gray-400"><%= bill.discount %></td>
-        <td class="border border-gray-400"><%= bill.currency %></td>
-        <td class="border border-gray-400"><%= bill.exchange_rate %></td>
-        <td class="border border-gray-400"><%= bill.total %></td>
-        <td class="border border-gray-400"><%= bill.type_of_vaucher %></td>
-        <td class="border border-gray-400"><%= bill.payment_method %></td>
-        <td class="border border-gray-400"><%= bill.expedition_place %></td>
-        <td class="border border-gray-400"><%= bill.confirmation %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.version %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.serie %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.folio %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.date %></td>
+        <td class="border border-gray-400 text-xs"><%= truncate bill.stamp %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.way_to_pay %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.certificate_number %></td>
+        <td class="border border-gray-400 text-xs"><%= truncate bill.certificate %></td>
+        <td class="border border-gray-400 text-xs"><%= truncate bill.certificate %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.payment_conditions %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.subtotal %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.discount %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.currency %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.exchange_rate %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.total %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.type_of_vaucher %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.payment_method %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.expedition_place %></td>
+        <td class="border border-gray-400 text-xs"><%= bill.confirmation %></td>
       </tr>
     <% end %>
   </tbody>

@@ -10,7 +10,6 @@ class BillsController < ApplicationController
       bill = Bill.from_json(unformated_json)
       bill.save
     end
-    byebug
     redirect_to bills_url
   end
 end

@@ -5,7 +5,6 @@ class Bill < ApplicationRecord
     json = JSON.parse string
     json = json['elements'].first
     json['attributes']
-    byebug
     self.new(
       version:          json['attributes']['Version'],
       serie:            json['attributes']['Serie'],
