@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_10_20_180759) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "bills", force: :cascade do |t|
     t.string "voucher_node"
     t.string "version"
@@ -53,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_180759) do
     t.string "code"
     t.string "concept"
     t.string "amount"
-    t.bigint "bill_id", null: false
+    t.integer "bill_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bill_id"], name: "index_payroll_deductions_on_bill_id"
@@ -65,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_180759) do
     t.string "concept"
     t.string "taxed_amount"
     t.string "exempt_amount"
-    t.bigint "bill_id", null: false
+    t.integer "bill_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bill_id"], name: "index_payroll_perceptions_on_bill_id"

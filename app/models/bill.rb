@@ -19,8 +19,6 @@ class Bill < ApplicationRecord
           exempt_amount:    perception.dig(:attributes, :ImporteExento),
         }
       end
-
-    byebug
     deductions = 
       ( get_deductions(json).dig(0, :elements) || [] ).map do |deduction|
         {

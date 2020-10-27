@@ -12,7 +12,6 @@ class BillsController < ApplicationController
       bill = Bill.from_json(item)
       bill.save
     end
-    redirect_to bills_url
     render json: JSON.parse( unformated_json )
   end
 end
