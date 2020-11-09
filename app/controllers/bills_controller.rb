@@ -1,17 +1,27 @@
 class BillsController < ApplicationController
   def index
-    @bills = Bill.all
+    @bills = Bill.all.limit(10)
   end
 
   def create
     unformated_json = params['_json'].first
 
-    Bill.destroy_all
+    Bill.delete_all
 
-    params['_json'].each do |item|
-      bill = Bill.from_json(item)
-      bill.save
+    # Bill.with_session do |session|
+    #   session.start_transaction
+
+      params['_json'].each do |item|
+        bill = Bill.from_json(item)
+        bill.save
+      end
+
+      # session.commit_transaction
+    # end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: Bill.all.last }
     end
-    render json: JSON.parse( unformated_json )
   end
 end
