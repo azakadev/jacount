@@ -240,41 +240,52 @@
     
                                     <tbody class="bg-white">
                                     <% @bills.each_with_index do |bill, index| %>
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <tr class="<%= cycle('bg-purple-100', '') -%>">
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200">
                                                 <div class="text-sm leading-5 text-gray-900"><%= index + 1 %></div>
-                                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
+                                                <!-- <div class="text-sm leading-5 text-gray-500">Web dev</div> -->
                                             </td>
-                                            <!-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.version %></div></td> -->
-                                            <!-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.serie %></div></td> -->
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.folio %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.date %></div></td>
-                                            <!-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# truncate bill.stamp %></div></td> -->
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.way_to_pay %></div></td>
-                                            <!-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# bill.certificate_number %></div></td> -->
-                                            <!-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%#  truncate bill.certificate %></div></td> -->
-                                            <!-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# bill.payment_conditions %></div></td> -->
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.subtotal %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.discount %></div></td>
-                                            <!-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# bill.currency %></div></td> -->
-                                            <!-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# bill.exchange_rate %></div></td> -->
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.total %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.type_of_vaucher %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payment_method %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.expedition_place %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.confirmation %></div></td>
+                                            <!-- <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.version %></div></td> -->
+                                            <!-- <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.serie %></div></td> -->
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.folio %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.date %></div></td>
+                                            <!-- <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# truncate bill.stamp %></div></td> -->
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.way_to_pay %></div></td>
+                                            <!-- <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# bill.certificate_number %></div></td> -->
+                                            <!-- <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%#  truncate bill.certificate %></div></td> -->
+                                            <!-- <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# bill.payment_conditions %></div></td> -->
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.subtotal %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.discount %></div></td>
+                                            <!-- <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# bill.currency %></div></td> -->
+                                            <!-- <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%# bill.exchange_rate %></div></td> -->
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.total %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.type_of_vaucher %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payment_method %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.expedition_place %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.confirmation %></div></td>
 
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.transmiter_rfc %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.transmiter_name %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.transmiter_fiscal_regime %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.transmiter_rfc %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.transmiter_name %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.transmiter_fiscal_regime %></div></td>
 
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.initial_payment_date %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.final_payment_date %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payment_date %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.initial_payment_date %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.final_payment_date %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payment_date %></div></td>
 
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_perceptions.count %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_deductions.count %></div></td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_other_payments.count %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_perceptions.count %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_deductions.count %></div></td>
+                                            <td class="px-2 py-1 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= "OtrosPagos: #{bill.payroll_other_payments.count}" %>
+                                                <br>
+                                                <% bill.payroll_other_payments.each do |payment| %>
+                                                    <%= payment.inspect %>
+                                                    <br>
+                                                    <%= "\tSubsidios: #{payment.employment_subsidies.count}" %>
+                                                    <br>
+                                                    <% payment.employment_subsidies.each do |subsidy| %>
+                                                      <%= "\t#{subsidy.inspect}"  %>
+                                                    <% end %>
+                                                <% end %>
+                                            </div></td>
                                            
                                         </tr>
                                         <% end %>

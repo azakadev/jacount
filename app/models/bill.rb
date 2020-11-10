@@ -39,8 +39,14 @@ class Bill < ApplicationRecord
     other_payments = 
       (get_other_payments(json).dig(0, :elements) || [] ).map do |payment|
 
-        employment_subsidies = get_employment_subsidies(payment)
-        
+        employment_subsidies = get_employment_subsidies(payment).map do |subsidy|
+          {
+            subsidy_caused: subsidy.dig(:attributes, :SubsidioCausado),
+            subsidy_paid: subsidy.dig(:attributes, :SubsidioPagado),
+          }
+        end
+
+        byebug        
         {
           other_type_payment: payment.dig(:attributes, :TipoOtroPago),
           code:               payment.dig(:attributes, :Clave),
@@ -103,6 +109,6 @@ class Bill < ApplicationRecord
   end
 
   def self.get_employment_subsidies(json)
-    ( json.dig(0, :elements) || [] ).select {|element| element[:name] == "nomina12:SubsidioAlEmpleo"}
+    ( json.dig(:elements) || [] ).select {|element| element[:name] == "nomina12:SubsidioAlEmpleo"}
   end
 end
