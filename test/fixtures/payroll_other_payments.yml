@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  other_type_payment: MyString
+  code: MyString
+  concept: MyString
+  amount: 9.99
+  bill: one
+
+two:
+  other_type_payment: MyString
+  code: MyString
+  concept: MyString
+  amount: 9.99
+  bill: two

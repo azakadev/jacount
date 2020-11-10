@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_180759) do
+ActiveRecord::Schema.define(version: 2020_11_09_231849) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "bills", force: :cascade do |t|
     t.string "voucher_node"
@@ -45,15 +48,35 @@ ActiveRecord::Schema.define(version: 2020_10_20_180759) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "employment_subsidies", force: :cascade do |t|
+    t.decimal "subsidy_caused", precision: 10, scale: 2
+    t.decimal "subsidy_paid", precision: 10, scale: 2
+    t.bigint "payroll_other_payment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payroll_other_payment_id"], name: "index_employment_subsidies_on_payroll_other_payment_id"
+  end
+
   create_table "payroll_deductions", force: :cascade do |t|
     t.string "deduction_type"
     t.string "code"
     t.string "concept"
     t.string "amount"
-    t.integer "bill_id", null: false
+    t.bigint "bill_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bill_id"], name: "index_payroll_deductions_on_bill_id"
+  end
+
+  create_table "payroll_other_payments", force: :cascade do |t|
+    t.string "other_type_payment"
+    t.string "code"
+    t.string "concept"
+    t.decimal "amount", precision: 10, scale: 2
+    t.bigint "bill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bill_id"], name: "index_payroll_other_payments_on_bill_id"
   end
 
   create_table "payroll_perceptions", force: :cascade do |t|
@@ -62,12 +85,14 @@ ActiveRecord::Schema.define(version: 2020_10_20_180759) do
     t.string "concept"
     t.string "taxed_amount"
     t.string "exempt_amount"
-    t.integer "bill_id", null: false
+    t.bigint "bill_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bill_id"], name: "index_payroll_perceptions_on_bill_id"
   end
 
+  add_foreign_key "employment_subsidies", "payroll_other_payments"
   add_foreign_key "payroll_deductions", "bills"
+  add_foreign_key "payroll_other_payments", "bills"
   add_foreign_key "payroll_perceptions", "bills"
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subsidy_caused: 9.99
+  susidy_paid: 9.99
+  references: 
+
+two:
+  subsidy_caused: 9.99
+  susidy_paid: 9.99
+  references: 

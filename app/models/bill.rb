@@ -1,9 +1,15 @@
 class Bill < ApplicationRecord
   has_many :payroll_perceptions, dependent: :delete_all
   has_many :payroll_deductions, dependent: :delete_all
+  has_many :payroll_other_payments, dependent: :delete_all
+  has_many :employment_subsidies,
+               through: :payroll_other_payments,
+            class_name: 'PayrollOtherPayment::EmploymentSubsidy'
 
   accepts_nested_attributes_for :payroll_perceptions
   accepts_nested_attributes_for :payroll_deductions
+  accepts_nested_attributes_for :payroll_other_payments
+  accepts_nested_attributes_for :employment_subsidies
 
   def self.from_json(string)
     json = JSON.parse string, symbolize_names: true
@@ -19,6 +25,7 @@ class Bill < ApplicationRecord
           exempt_amount:    perception.dig(:attributes, :ImporteExento),
         }
       end
+
     deductions = 
       ( get_deductions(json).dig(0, :elements) || [] ).map do |deduction|
         {
@@ -26,6 +33,21 @@ class Bill < ApplicationRecord
           code:             deduction.dig(:attributes, :Clave),
           concept:          deduction.dig(:attributes, :Concepto),
           amount:           deduction.dig(:attributes, :Importe),
+        }
+      end
+
+    other_payments = 
+      (get_other_payments(json).dig(0, :elements) || [] ).map do |payment|
+
+        employment_subsidies = get_employment_subsidies(payment)
+        
+        {
+          other_type_payment: payment.dig(:attributes, :TipoOtroPago),
+          code:               payment.dig(:attributes, :Clave),
+          concept:            payment.dig(:attributes, :Concepto),
+          amount:             payment.dig(:attributes, :Importe),
+          employment_subsidies_attributes: 
+                              employment_subsidies,
         }
       end
 
@@ -63,6 +85,7 @@ class Bill < ApplicationRecord
 
       payroll_perceptions_attributes: perceptions,
       payroll_deductions_attributes: deductions,
+      payroll_other_payments_attributes: other_payments,
     )
   end
 
@@ -73,6 +96,13 @@ class Bill < ApplicationRecord
 
   def self.get_perceptions(json)
     json.dig(:elements, 3, :elements, 0, :elements).select {|element| element[:name] == "nomina12:Percepciones"}
+  end
 
+  def self.get_other_payments(json)
+    json.dig(:elements, 3, :elements, 0, :elements).select {|element| element[:name] == "nomina12:OtrosPagos"}
+  end
+
+  def self.get_employment_subsidies(json)
+    ( json.dig(0, :elements) || [] ).select {|element| element[:name] == "nomina12:SubsidioAlEmpleo"}
   end
 end

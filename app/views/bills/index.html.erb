@@ -234,6 +234,7 @@
                                   
                                         <th class="bpx-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Percepciones</th>
                                         <th class="bpx-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Deducciones</th>
+                                        <th class="bpx-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">OtrosPagos</th>
                                         </tr>
                                     </thead>
     
@@ -273,6 +274,7 @@
 
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_perceptions.count %></div></td>
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_deductions.count %></div></td>
+                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_other_payments.count %></div></td>
                                            
                                         </tr>
                                         <% end %>
