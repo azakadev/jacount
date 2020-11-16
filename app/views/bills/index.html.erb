@@ -185,7 +185,8 @@
                                         <div class="text-gray-500">
                                             <%= file_field_tag 'Carpeta', id: 'input_xml_load', webkitdirectory: true, directory: true, multiple: true %>
                                         
-                                            <%= button_to 'Cargar XMLs', bills_path, id: 'sendDataButton' %>    
+                                            <%= button_to 'Cargar XMLs', bills_path, id: 'sendDataButton', class: "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" %> 
+                                            <div id="loadInfo"></div>   
                                         </div>
                                     </div>
                                 </div>
@@ -234,6 +235,7 @@
                                   
                                         <th class="bpx-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Percepciones</th>
                                         <th class="bpx-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Deducciones</th>
+                                        <th class="bpx-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">OtrosPagos</th>
                                         </tr>
                                     </thead>
     
@@ -273,6 +275,7 @@
 
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_perceptions.count %></div></td>
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_deductions.count %></div></td>
+                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 text-gray-900"><%= bill.payroll_other_payments.count %></div></td>
                                            
                                         </tr>
                                         <% end %>
